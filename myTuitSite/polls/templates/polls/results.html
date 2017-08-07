@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  </head>
+  <body>
+    <div class="container">
+      <br>
+    <div class="jumbotron">
+      <h1>Voting Statistics for the Querry</h1>
+
+      <h3>{{ question.question_text }}</h3>
+
+      <ul>
+      {% for choice in question.choice_set.all %}
+          <li>{{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>
+      {% endfor %}
+      </ul>
+
+      <a href="{% url 'polls:detail' question.id %}">Vote again?</a>&nbsp&nbsp&nbsp
+      <a href="{% url 'polls:index' %}">Go Back to Querries</a>
+
+    </div>
+  </div>
+  </body>
+</html>
